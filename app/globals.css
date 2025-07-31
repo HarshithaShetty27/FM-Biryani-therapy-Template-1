@@ -1,26 +1,222 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Sidebar colors */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* UI colors */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Theme colors */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ========= 🌞 Light Mode ========= */
+:root {
+  --radius: 0.625rem;
+
+  /* Brand base */
+  --background: oklch(97% 0.015 85);       /* rice-cream */
+  --foreground: oklch(12% 0.03 25);        /* deep earthy text */
+
+ --primary: oklch(68% 0.25 45);         /* Vibrant orange */
+  --primary-foreground: oklch(98% 0.01 85);
+
+  --secondary: oklch(60% 0.22 30);         /* Warm red-orange */
+  --secondary-foreground: oklch(98% 0.01 85);
+
+  --muted: oklch(92% 0.01 85);             /* light beige */
+  --muted-foreground: oklch(50% 0.02 25);
+
+   --accent: oklch(78% 0.24 95);            /* Yellowy-orange (used on right of gradient) */
+  --accent-foreground: oklch(98% 0.01 85);
+  --spice-paprika: oklch(62% 0.25 40);      /* Slightly deeper paprika red */
+  --spice-gold: oklch(68% 0.22 60); 
+
+  --destructive: oklch(60% 0.22 27);       /* alert red */
+
+  --border: oklch(91% 0.01 85);
+  --input: oklch(91% 0.01 85);
+  --ring: oklch(45% 0.03 70);
+
+  --card: oklch(98% 0.01 85);
+  --card-foreground: oklch(12% 0.03 25);
+  --popover: oklch(98% 0.01 85);
+  --popover-foreground: oklch(12% 0.03 25);
+
+  --chart-1: oklch(66% 0.22 41); /* saffron yellow */
+  --chart-2: oklch(60% 0.18 95); /* herb green */
+  --chart-3: oklch(55% 0.16 180);
+  --chart-4: oklch(72% 0.22 85); /* warm spice */
+  --chart-5: oklch(60% 0.25 25); /* deep chili */
+
+  --sidebar: oklch(98% 0.01 85);
+  --sidebar-foreground: oklch(12% 0.03 25);
+  --sidebar-primary: oklch(65% 0.2 70);
+  --sidebar-primary-foreground: oklch(98% 0.01 85);
+  --sidebar-accent: oklch(55% 0.22 30);
+  --sidebar-accent-foreground: oklch(98% 0.01 85);
+  --sidebar-border: oklch(91% 0.01 85);
+  --sidebar-ring: oklch(45% 0.03 70);
+}
+
+/* ========= 🌚 Dark Mode ========= */
+.dark {
+  --background: oklch(12% 0.03 25);
+  --foreground: oklch(98% 0.01 85);
+
+  --card: oklch(20% 0.02 25);
+  --card-foreground: oklch(98% 0.01 85);
+  --popover: oklch(20% 0.02 25);
+  --popover-foreground: oklch(98% 0.01 85);
+
+  --primary: oklch(91% 0.01 85);
+  --primary-foreground: oklch(20% 0.02 25);
+
+  --secondary: oklch(35% 0.1 30);
+  --secondary-foreground: oklch(98% 0.01 85);
+
+  --muted: oklch(30% 0.06 25);
+  --muted-foreground: oklch(75% 0.02 85);
+
+  --accent: oklch(35% 0.1 85);
+  --accent-foreground: oklch(98% 0.01 85);
+
+  --destructive: oklch(58% 0.22 25);
+
+  --border: oklch(100% 0 0 / 10%);
+  --input: oklch(100% 0 0 / 15%);
+  --ring: oklch(50% 0.02 25);
+
+  --chart-1: oklch(55% 0.2 264);
+  --chart-2: oklch(65% 0.18 145);
+  --chart-3: oklch(60% 0.2 85);
+  --chart-4: oklch(60% 0.25 305);
+  --chart-5: oklch(58% 0.22 25);
+
+  --sidebar: oklch(20% 0.02 25);
+  --sidebar-foreground: oklch(98% 0.01 85);
+  --sidebar-primary: oklch(55% 0.2 264);
+  --sidebar-primary-foreground: oklch(98% 0.01 85);
+  --sidebar-accent: oklch(35% 0.1 30);
+  --sidebar-accent-foreground: oklch(98% 0.01 85);
+  --sidebar-border: oklch(100% 0 0 / 10%);
+  --sidebar-ring: oklch(50% 0.02 25);
+}
+
+/* ========= Apply base styles ========= */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ==== 🌿 Color Utilities (Custom Tailwind Alternatives) ==== */
+
+/* Base Colors */
+.bg-background         { background-color: oklch(97% 0.015 85); }
+.text-foreground       { color: oklch(12% 0.03 25); }
+.border-border         { border-color: oklch(91% 0.01 85); }
+.bg-input              { background-color: oklch(91% 0.01 85); }
+.ring-ring             { box-shadow: 0 0 0 2px oklch(45% 0.03 70); }
+
+/* Cards & Popovers */
+.bg-card               { background-color: oklch(98% 0.01 85); }
+.text-card-foreground  { color: oklch(12% 0.03 25); }
+.bg-popover            { background-color: oklch(98% 0.01 85); }
+.text-popover-foreground { color: oklch(12% 0.03 25); }
+
+/* Primary */
+.bg-primary            { background-color: oklch(65% 0.2 70); }
+.text-primary-foreground { color: oklch(98% 0.01 85); }
+
+/* Secondary */
+.bg-secondary          { background-color: oklch(55% 0.22 30); }
+.text-secondary-foreground { color: oklch(98% 0.01 85); }
+
+/* Muted */
+.bg-muted              { background-color: oklch(92% 0.01 85); }
+.text-muted-foreground { color: oklch(50% 0.02 25); }
+
+/* Accent */
+.bg-accent             { background-color: oklch(65% 0.28 35); }
+.text-accent-foreground { color: oklch(98% 0.01 85); }
+
+/* Destructive */
+.bg-destructive        { background-color: oklch(60% 0.22 27); }
+.text-destructive-foreground { color: oklch(12% 0.03 25); }
+
+/* Spice Palette */
+.text-spice-gold { color: oklch(78% 0.26 85); }
+.bg-spice-paprika      { background-color: oklch(55% 0.22 30); }
+.bg-spice-turmeric     { background-color: oklch(65% 0.18 85); }
+
+/* Rice */
+.bg-rice-cream         { background-color: oklch(97% 0.015 85); }
+
+/* Herb */
+.bg-herb-green         { background-color: oklch(60% 0.18 95); }
+
+/* Sidebar */
+.bg-sidebar            { background-color: oklch(98% 0.01 85); }
+.text-sidebar-foreground { color: oklch(12% 0.03 25); }
+
+.bg-sidebar-primary    { background-color: oklch(65% 0.2 70); }
+.text-sidebar-primary-foreground { color: oklch(98% 0.01 85); }
+
+.bg-sidebar-accent     { background-color: oklch(55% 0.22 30); }
+.text-sidebar-accent-foreground { color: oklch(98% 0.01 85); }
+
+.border-sidebar-border { border-color: oklch(91% 0.01 85); }
+.ring-sidebar-ring     { box-shadow: 0 0 0 2px oklch(45% 0.03 70); }
+
+
+
+.hover\:text-spice-gold:hover {
+  color: oklch(65% 0.2 70); /* spice-gold */
 }
